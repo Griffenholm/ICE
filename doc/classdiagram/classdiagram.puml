@@ -1,28 +1,45 @@
 @startuml
 !pragma layout smetana
-'https://plantuml.com/class-diagram
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
-
-List <|-- AbstractList
-Collection <|-- AbstractCollection
-
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
-
-class ArrayList {
-Object[] elementData
-size()
+class Main {
++ static void main(String[] args)
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
+
+class TextileHouse{
 }
 
+class ProductManager{
+}
+
+class FabricFinder{
+}
+
+class User {
+- String username
+- String password
+- ArrayList<Product> savedList
+- Collection<Product> getOrder
++ User(String username, String password)
++ String toString()
++ void addToSavedList(Product product)
+- void addToOrderList(Product product)
++ String getUsername()
++ ArrayList<Product> getSavedList()
++ ArrayList<Product> getOrderList()
+}
+
+class Textile {}
+
+class TextUI {}
+
+class FileIO {}
+
+Main *-- TextileHouse
+TextileHouse *-- ProductManager
+ProductManager *-- Textile
+ProductManager *-- FabricFinder
+TextileHouse *-- Textile
+TextileHouse *-- User
+User *-- Textile
 @enduml
