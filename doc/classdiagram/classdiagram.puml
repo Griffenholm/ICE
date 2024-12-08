@@ -8,7 +8,7 @@ class Main {
 
 class TextileHouse{
 - String name
-- String textileDataPath
+- String textilesDataPath
 - String userDataPath
 - HashMap<String, String> userData
 - User currentUser
