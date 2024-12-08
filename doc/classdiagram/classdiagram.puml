@@ -7,9 +7,30 @@ class Main {
 
 
 class TextileHouse{
+- String name
+- String textileDataPath
+- String userDataPath
+- HashMap<String, String> userData
+- User currentUser
+- TextUI ui
+- FileIO io
+- ProductManager manager
++ TextileHouse(String name)
+- void startTextileHouse()
+- void createUser()
+- void addUser(User u)
+- void loadUserData()
+- void loadWatchlist()
+- void loadPrevWatched()
+- void homeMenu()
 }
 
 class ProductManager{
+- TextUI
+- FileIO
+- ArrayList<Textiles> textiles
+- User currentUser
+- TextileHouse textileHouse
 }
 
 class FabricFinder{
@@ -31,15 +52,32 @@ class User {
 
 class Textile {}
 
-class TextUI {}
+package "util" {
 
-class FileIO {}
+class TextUI {
+- Scanner scan
++ void displayMsg(String msg)
++ int displayHomeMenu(String msg)
++ int promptNumeric(String msg)
++ String promptText(String msg)
+}
+
+class FileIO {
++ HashMap<String, String> readUserData(String path)
++ ArrayList<Movie> readTextileData(String path)
++ void SaveUserData(String userAsText, String path)
++ void saveTextileList(String username, ArrayList<Textile> watchlist, String listType)
++ ArrayList<Textile> loadTextileList(String username, String listType)
+}
+}
 
 Main *-- TextileHouse
+TextileHouse *-- FileIO
+TextileHouse *-- TextUI
+TextileHouse *-- User
 TextileHouse *-- ProductManager
 ProductManager *-- Textile
 ProductManager *-- FabricFinder
 TextileHouse *-- Textile
-TextileHouse *-- User
 User *-- Textile
 @enduml
