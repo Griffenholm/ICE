@@ -35,6 +35,9 @@ class TextileManager{
 class FabricFinder{
 }
 
+class Login{
+}
+
 class User {
 - String username
 - String password

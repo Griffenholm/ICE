@@ -6,6 +6,7 @@ public class TextileService {
     private TextUI ui = new TextUI();
     private FileIO io = new FileIO();
     private TextileManager manager;
+    private User currentUser;
 
     TextileService(String name) {
         this.name = name;
@@ -18,5 +19,42 @@ public class TextileService {
     void startTextileService(){
         ui.displayMsg("Welcome to " + this.name);
 
+        homeMenu();
+
+    }
+
+
+
+    public void homeMenu() {
+        //loadSavedlist(); // Loader savedlist med det samme
+        //this.manager = new TextileManager(ui, io, textileDataPath, this, currentUser);
+        int choice = ui.displayHomeMenu("Type a number:");
+        switch (choice) {
+            case 1:
+                manager.textileCollection();
+                ui.displayMsg("Textiles");
+                break;
+            case 2:
+                manager.searchByTextiles();
+                ui.displayMsg("Search");
+                break;
+            case 3:
+                //manager.FabricFinder();
+                ui.displayMsg("FabricFinder");
+                break;
+            case 4:
+                ui.displayMsg("Profile");
+                break;
+            case 5:
+                //manager.textilelistInteraction(currentUser.getSavedlist(), "Savedlist");
+                ui.displayMsg("Saved");
+                break;
+            case 6:
+                ui.displayMsg("Logging out...");
+                break;
+            default:
+                ui.displayMsg("Choice invalid");
+                homeMenu();
+        }
     }
 }
