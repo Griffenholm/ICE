@@ -1,4 +1,4 @@
-public class TextileHouse {
+public class TextileService {
     private String name;
     private String textilesDataPath;
     private String userDataPath;
@@ -7,7 +7,7 @@ public class TextileHouse {
     private FileIO io = new FileIO();
     private ProductManager manager;
 
-    TextileHouse(String name) {
+    TextileService(String name) {
         this.name = name;
         this.textilesDataPath = "data/textiles.csv";
         this.userDataPath = "data/userData.csv";
@@ -15,7 +15,7 @@ public class TextileHouse {
 
     }
 
-    void startTextileHouse(){
+    void startTextileService(){
         ui.displayMsg("Welcome to " + this.name);
 
     }
