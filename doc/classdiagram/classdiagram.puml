@@ -6,7 +6,7 @@ class Main {
 }
 
 
-class TextileHouse{
+class TextileService{
 - String name
 - String textilesDataPath
 - String userDataPath
@@ -15,8 +15,8 @@ class TextileHouse{
 - TextUI ui
 - FileIO io
 - ProductManager manager
-+ TextileHouse(String name)
-- void startTextileHouse()
++ TextileService(String name)
+- void startTextileService()
 - void createUser()
 - void addUser(User u)
 - void loadUserData()
@@ -30,7 +30,7 @@ class ProductManager{
 - FileIO
 - ArrayList<Textiles> textiles
 - User currentUser
-- TextileHouse textileHouse
+- TextileService textileService
 }
 
 class FabricFinder{
@@ -71,13 +71,13 @@ class FileIO {
 }
 }
 
-Main *-- TextileHouse
-TextileHouse *-- FileIO
-TextileHouse *-- TextUI
-TextileHouse *-- User
-TextileHouse *-- ProductManager
+Main *-- TextileService
+TextileService *-- FileIO
+TextileService *-- TextUI
+TextileService *-- User
+TextileService *-- ProductManager
 ProductManager *-- Textile
 ProductManager *-- FabricFinder
-TextileHouse *-- Textile
+TextileService *-- Textile
 User *-- Textile
 @enduml
