@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
 public class TextUI {
-    private Scanner scan = new Scanner(System.in);
+    private static Scanner scan = new Scanner(System.in);
 
-    public void displayMsg(String msg){
+    public static void displayMsg(String msg){
         System.out.println(msg);
     }
 
@@ -13,7 +13,7 @@ public class TextUI {
         return choice;
     }
 
-    public int promptNumeric(String msg) {
+    public static int promptNumeric(String msg) {
         System.out.println(msg);     //Brugeren stilles et spørgsmål
         String input = scan.nextLine();
         int number;
