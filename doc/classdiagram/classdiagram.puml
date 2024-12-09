@@ -14,18 +14,17 @@ class TextileService{
 - User currentUser
 - TextUI ui
 - FileIO io
-- ProductManager manager
+- TextileManager manager
 + TextileService(String name)
 - void startTextileService()
 - void createUser()
 - void addUser(User u)
 - void loadUserData()
-- void loadWatchlist()
-- void loadPrevWatched()
+- void loadSavedList()
 - void homeMenu()
 }
 
-class ProductManager{
+class TextileManager{
 - TextUI
 - FileIO
 - ArrayList<Textiles> textiles
@@ -39,15 +38,15 @@ class FabricFinder{
 class User {
 - String username
 - String password
-- ArrayList<Product> savedList
-- Collection<Product> getOrder
+- ArrayList<Textile> savedList
+- Collection<Textile> getOrder
 + User(String username, String password)
 + String toString()
-+ void addToSavedList(Product product)
-- void addToOrderList(Product product)
++ void addToSavedList(Textile textile)
+- void addToOrderList(Textile textile)
 + String getUsername()
-+ ArrayList<Product> getSavedList()
-+ ArrayList<Product> getOrderList()
++ ArrayList<Textile> getSavedList()
++ ArrayList<Textile> getOrderList()
 }
 
 class Textile {}
@@ -66,7 +65,7 @@ class FileIO {
 + HashMap<String, String> readUserData(String path)
 + ArrayList<Movie> readTextileData(String path)
 + void SaveUserData(String userAsText, String path)
-+ void saveTextileList(String username, ArrayList<Textile> watchlist, String listType)
++ void saveTextileList(String username, ArrayList<Textile> savedList, String listType)
 + ArrayList<Textile> loadTextileList(String username, String listType)
 }
 }
@@ -75,9 +74,9 @@ Main *-- TextileService
 TextileService *-- FileIO
 TextileService *-- TextUI
 TextileService *-- User
-TextileService *-- ProductManager
-ProductManager *-- Textile
-ProductManager *-- FabricFinder
+TextileService *-- TextileManager
+TextileManager *-- Textile
+TextileManager *-- FabricFinder
 TextileService *-- Textile
 User *-- Textile
 @enduml

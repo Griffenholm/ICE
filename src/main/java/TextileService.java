@@ -5,7 +5,7 @@ public class TextileService {
     private String userData;
     private TextUI ui = new TextUI();
     private FileIO io = new FileIO();
-    private ProductManager manager;
+    private TextileManager manager;
 
     TextileService(String name) {
         this.name = name;
