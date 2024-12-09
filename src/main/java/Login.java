@@ -9,7 +9,7 @@ public class Login {
         this.users = users;
     }
 
-    public User userLoginOrRegister(){
+   /* public User userLoginOrRegister(){
         TextUI.displayMsg("Do you want to login or create a new user? \n" +
                 "1. Login \n" +
                 "2. Create a new user");
@@ -20,7 +20,7 @@ public class Login {
            // UserLogin();
 
         }
-    }
+    }*/
 
 
 
