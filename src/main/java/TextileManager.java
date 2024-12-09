@@ -9,7 +9,7 @@ public class TextileManager {
 
     }
 
-    public void textilelistInteraction() {
+    /*public void textilelistInteraction() {
 
-    }
+    }*/
 }

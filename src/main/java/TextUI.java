@@ -8,7 +8,7 @@ public class TextUI {
     }
 
     public int displayHomeMenu(String msg) {
-        displayMsg("1. Textiles \n2. Search \n3. FabricFinder\n4. Profile\n5. \n6. Proceed to Checkout \n7. Log out");
+        displayMsg("1. Textiles \n2. Search \n3. FabricFinder\n4. Profile\n5. \n6. Checkout \n7. Log out");
         int choice = promptNumeric(msg);
         return choice;
     }

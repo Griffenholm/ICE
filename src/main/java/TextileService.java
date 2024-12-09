@@ -50,7 +50,10 @@ public class TextileService {
                 ui.displayMsg("Saved");
                 break;
             case 6:
-                ui.displayMsg("Logging out...");
+                ui.displayMsg("Checkout");
+                break;
+            case 7:
+                ui.displayMsg("Logging out");
                 break;
             default:
                 ui.displayMsg("Choice invalid");
