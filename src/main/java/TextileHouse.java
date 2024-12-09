@@ -1,5 +1,3 @@
-package org.example;
-
 public class TextileHouse {
     private String name;
     private String textilesDataPath;
