@@ -2,3 +2,4 @@ ID, Name, Color, Fabric, Composition, Cost, Path, RGB
 1, Blue Cotton, Blue, Cotton, 100% Cotton, 100, /local/images/blue_cotton.jpg, 0,0,255
 3, Red Silk, Red, Silk, 100% Silk, 100, /local/images/red_silk.jpg, 255,0,0
 4, Yellow Linen, Yellow, Linen, 100% Linen, 100, /local/images/yellow_linen.jpg, 0,255,0
+
