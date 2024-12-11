@@ -8,11 +8,9 @@ public class TextileManager {
     private FileIO io;
     private TextileService textileService;
 
-    TextileManager(TextUI ui, FileIO io, String textilesDataPath, TextileService textileService, User currentUser) {
+    TextileManager(TextUI ui, FileIO io, String textilesDataPath, User currentUser) {
         this.ui = ui;
         this.io = io;
-        //this.textiles = io.readTextileData(textilesDataPath, "Textile");
-        this.textileService = textileService;
         this.currentUser = currentUser;
     }
 
@@ -25,4 +23,6 @@ public class TextileManager {
     /*public void textilelistInteraction() {
 
     }*/
+
+
 }

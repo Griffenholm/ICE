@@ -1,9 +1,17 @@
 public abstract class Textile {
-    private String textileName;
+    protected String textileName;
+    protected String textileColor;
+    protected String textileFabric;
+    protected String textileComposition;
 
-    public Textile(String textileName){
+
+
+    public Textile(String textileName, String textileColor, String textileFabric, String textileComposition){
 
         this.textileName = textileName;
+        this.textileColor = textileColor;
+        this.textileFabric = textileFabric;
+        this.textileComposition = textileComposition;
         System.out.println(this.textileName);
 
     }

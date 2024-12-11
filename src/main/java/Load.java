@@ -26,20 +26,16 @@ public class Load {
         for (String s : data) {
             String[] values = s.replace(" ", "").split(";");
             String textileName = values[0];
-            /*String textileColor = values[1];
+            String textileColor = values[1];
             String textileFabric = values[2];
             String textileComposition = values[3];
-            float textileCost = Float.parseFloat(values[4].replace(",", "."));*/
+            /*float textileCost = Float.parseFloat(values[4].replace(",", "."));*/
 
-            Textiles tmpSeries = new Textiles(textileName);
-
-
-
+            Textiles tmpSeries = new Textiles(textileName, textileColor, textileFabric, textileComposition);
 
 
             textiles.add(tmpSeries);
             System.out.println(textileName);
-            //medias.add(tmpSeries);
 
         }
 
@@ -48,41 +44,4 @@ public class Load {
     }
 
 
-
-    public static <T>ArrayList<T> readTextileData(String path) {
-        String name;
-        String color;
-        String fabric;
-        String composition;
-        double cost;
-        ArrayList<T> textileData = new ArrayList<>();
-        File file = new File(path);
-        try {
-            Scanner scan = new Scanner(file);
-            scan.nextLine();//skip header
-            while (scan.hasNextLine()) {
-                String line = scan.nextLine();
-                String[] data = line.split(";"); //Name/Color/Fabric/Composition/Cost/Path/RGB
-                name = data[0].trim();
-                color = data[1].trim();
-                fabric = (data[2].trim());
-                composition = (data[3].trim());
-                try {
-                    String newCost = data[4].trim().replace(',', '.');
-                    cost = Double.valueOf(newCost);
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
-
-                //Textile newTextile = new Textile(name, color, fabric, composition, cost);
-                //textileData.add((T) newTextile);
-
-
-
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println("File was not found");
-        }
-        return textileData;
-    }
 }
