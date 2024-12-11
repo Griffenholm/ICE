@@ -27,7 +27,7 @@ public class TextileService {
 
     public void homeMenu() {
         //loadSavedlist(); // Loader savedlist med det samme
-        //this.manager = new TextileManager(ui, io, textileDataPath, this, currentUser);
+        this.manager = new TextileManager(ui, io, textilesDataPath, this, currentUser);
         int choice = ui.displayHomeMenu("Type a number:");
         switch (choice) {
             case 1:
