@@ -1,19 +1,19 @@
 import java.util.Scanner;
 
 public class TextUI {
-    private Scanner scan = new Scanner(System.in);
+    private static Scanner scan = new Scanner(System.in);
 
-    public void displayMsg(String msg){
+    public static void displayMsg(String msg){
         System.out.println(msg);
     }
 
     public int displayHomeMenu(String msg) {
-        displayMsg("1. Textiles \n2. Search \n3. \n4. \n5. Log out");
+        displayMsg("1. Textiles \n2. Search \n3. FabricFinder\n4. Profile\n5. \n6. Checkout \n7. Log out");
         int choice = promptNumeric(msg);
         return choice;
     }
 
-    public int promptNumeric(String msg) {
+    public static int promptNumeric(String msg) {
         System.out.println(msg);     //Brugeren stilles et spørgsmål
         String input = scan.nextLine();
         int number;
@@ -28,7 +28,7 @@ public class TextUI {
         return number;
     }
 
-    public String promptText(String msg){
+    public static String promptText(String msg){
         System.out.println(msg);    //Brugeren stilles et spørgsmål
         String input = scan.nextLine();
         return input;
