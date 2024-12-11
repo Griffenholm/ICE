@@ -2,6 +2,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 //import java.io.FileWriter;
 //import java.io.IOException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -43,4 +45,16 @@ public class FileIO {
         }
         return textileData;
     }
+
+    /*
+    public static void SaveUserData(String userAsText, String path) {
+        try {
+            FileWriter writer = new FileWriter(path, true);
+            writer.write(userAsText + "\n"); //"username, password";
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("something went wrong when writing to file");
+        }
+    }
+    */
 }
