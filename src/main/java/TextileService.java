@@ -1,5 +1,10 @@
+import java.util.ArrayList;
+
 public class TextileService {
     private String name;
+    //private ArrayList<User> users;
+    private ArrayList<Textile> textiles;
+    private Load load;
     private String textilesDataPath;
     private String userDataPath;
     private String userData;
@@ -14,6 +19,16 @@ public class TextileService {
         this.userDataPath = "data/userData.csv";
         //this.userData = io.readUserData(this.userDataPath);
 
+        this.textiles = new ArrayList<Textile>();
+        this.load = new Load(textiles);
+
+    }
+
+
+    public void setup() {
+        //load.loadUsers();
+        load.loadTextiles();
+        startTextileService();
     }
 
     void startTextileService(){
@@ -31,8 +46,10 @@ public class TextileService {
         int choice = ui.displayHomeMenu("Type a number:");
         switch (choice) {
             case 1:
-                manager.textileCollection();
-                ui.displayMsg("Textiles");
+                //TextUI.displayMsg("\nTextiles: ");
+                ui.displayMsg("\nTextiles: ");
+                textileCollection();
+
                 break;
             case 2:
                 manager.searchByTextiles();
@@ -61,4 +78,15 @@ public class TextileService {
                 homeMenu();
         }
     }
+
+    public void textileCollection(){
+        for (int i = 0; i < textiles.size(); i++){
+            TextUI.displayMsg(i+1 + " " + textiles.get(i).getTextileName());
+        }
+
+    }
+
+
+
+
 }

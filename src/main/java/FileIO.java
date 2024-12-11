@@ -9,7 +9,25 @@ import java.util.Scanner;
 
 public class FileIO {
 
-    public static <T>ArrayList<T> readTextileData(String path) {
+    public static ArrayList<String> readData(String path) {
+        ArrayList<String> data = new ArrayList<>();
+        File file = new File(path);
+        try{
+            Scanner scan = new Scanner(file);
+            scan.nextLine();//skip header
+
+            while (scan.hasNextLine())  {
+                String line = scan.nextLine();
+                data.add(line);
+
+            }
+        } catch (FileNotFoundException e){
+            System.out.println("File was not found");
+        }
+        return data;
+    }
+
+    /*public static <T>ArrayList<T> readTextileData(String path) {
         String name;
         String color;
         String fabric;
@@ -44,7 +62,7 @@ public class FileIO {
             System.out.println("File was not found");
         }
         return textileData;
-    }
+    }*/
 
     /*
     public static void SaveUserData(String userAsText, String path) {
