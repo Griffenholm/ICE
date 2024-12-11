@@ -28,7 +28,7 @@ public class TextUI {
         return number;
     }
 
-    public String promptText(String msg){
+    public static String promptText(String msg){
         System.out.println(msg);    //Brugeren stilles et spørgsmål
         String input = scan.nextLine();
         return input;
