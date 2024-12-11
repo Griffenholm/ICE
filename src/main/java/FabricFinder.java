@@ -17,6 +17,16 @@ public class FabricFinder {
     //User get similar product results that she can click on and go to product details. textile.csv
     //(Text is generated from the picture, to compare with our pictures.  https://api-ninjas.com/api/imagetotext)
 
+    //Prompt user for file path
+    // Welcome to our Fabric Finder Service.
+    // Our AI will help you find the fabric you are looking for.
+    // Please enter the path of your fabric image file.
+    // -> scanner with question and answer
+    TextUI
+
+
+    //Check if the file exists
+    File imageFile = new File(filePath);
 
 
 
