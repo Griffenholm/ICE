@@ -44,6 +44,7 @@ public class TextileService {
                 break;
             case 4:
                 ui.displayMsg("Profile");
+                User.profileMenu(currentUser);
                 break;
             case 5:
                 //manager.textilelistInteraction(currentUser.getSavedlist(), "Savedlist");
