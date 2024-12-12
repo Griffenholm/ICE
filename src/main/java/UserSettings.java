@@ -1,4 +1,4 @@
-public class UserSetting {
+public class UserSettings {
 
     private User user; // UserSetting "has-a" relationship
     private String businessName = "not provided yet";
@@ -10,12 +10,16 @@ public class UserSetting {
     private String country = "not provided yet";
     private int CVRnr = 0;
 
-    public UserSetting(User user) {
+    public UserSettings(User user) {
         this.user = user;
     }
 
     public String getBusinessName(){
         return businessName;
+    }
+
+    public User getAccount() {
+        return user;
     }
 
     public void setBusinessName(String business){
@@ -80,7 +84,7 @@ public class UserSetting {
 
     @Override
     public String toString(){
-        //
+        //Provides a readable string/int
         return String.format(" Username: %s\n Business:%s\n Contact Person: %s\n Email: %s\n Address: %s\n Postal Code: %d\n City: %s\n Country: %s\n CVR Number: %d");
     }
 }
