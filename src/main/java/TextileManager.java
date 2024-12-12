@@ -7,6 +7,7 @@ public class TextileManager {
     private TextUI ui;
     private FileIO io;
     private TextileService textileService;
+    private FabricFinder fabricFinder;
 
     TextileManager(TextUI ui, FileIO io, String textilesDataPath, User currentUser) {
         this.ui = ui;

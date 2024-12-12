@@ -10,6 +10,7 @@ public class Menu {
     private TextileManager manager;
 
     private Textile currentTextile;
+    private FabricFinder fabricFinder;
 
 
     public Menu(ArrayList<Textile> textiles) {
@@ -18,6 +19,7 @@ public class Menu {
         this.textiles = textiles;
 
         this.manager = manager;
+        //this.fabricFinder = fabricFinder;
         //this.users = users;
         //this.search = new Search();
     }
@@ -38,8 +40,8 @@ public class Menu {
                 ui.displayMsg("Search");
                 break;
             case 3:
-                //manager.FabricFinder();
                 ui.displayMsg("FabricFinder");
+                fabricFinder.startFabricFinder();
                 break;
             case 4:
                 ui.displayMsg("Profile");
