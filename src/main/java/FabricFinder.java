@@ -11,7 +11,7 @@ import java.util.List;
 
 public class FabricFinder {
 
-    private List<Textile> textileCatalog;
+    private final List<Textile> textileCatalog;
 
     //Constructor to initialize the textile catalog
     public FabricFinder(String csvFilePath) {
@@ -70,12 +70,12 @@ public class FabricFinder {
         }else{
             TextUI.displayMsg("Matching fabrics: \n");
             for (Textile textile : matchedTextiles){
-                TextUI.displayMsg("\t" + textile.getName() + "\n");
+                TextUI.displayMsg("\t" + textile.getTextileName() + "\n");
             }
         }
     }
 
-  //Call Google Vision API to get the dominant RGB color
+    //Call Google Vision API to get the dominant RGB color
     private int[] getDominantColorFromVisionAPI(String filePath) {
       try {
           //Initialize the Vision API client
@@ -136,14 +136,14 @@ public class FabricFinder {
       return matchingTextiles;
     }
 
-private boolean isColorSimilar(int[] rgb1, int[] rgb2) {
-    int threshold = 50; //Adjust threshold as needed
-    return  Math.abs(rgb1[0] - rgb2[0]) <= threshold &&
-            Math.abs(rgb1[1] -rgb2[1]) <= threshold &&
-            Math.abs(rgb1[2] -rgb2[2]) <= threshold;
-}
+    private boolean isColorSimilar(int[] rgb1, int[] rgb2) {
+        int threshold = 50; //Adjust threshold as needed
+        return  Math.abs(rgb1[0] - rgb2[0]) <= threshold &&
+                Math.abs(rgb1[1] -rgb2[1]) <= threshold &&
+                Math.abs(rgb1[2] -rgb2[2]) <= threshold;
+    }
 
-//Load textile data from a CSV file
+    //Load textile data from a CSV file
     public static List<Textile> loadTextilesFromCSV(String fileName){
       List <Textile> textiles = new ArrayList<>();
       try (BufferedReader br = new BufferedReader(new FileReader(fileName))){
