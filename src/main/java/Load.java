@@ -35,7 +35,6 @@ public class Load {
 
 
             textiles.add(tmpSeries);
-            System.out.println(textileName);
 
         }
 

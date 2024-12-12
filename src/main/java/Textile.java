@@ -12,7 +12,6 @@ public abstract class Textile {
         this.textileColor = textileColor;
         this.textileFabric = textileFabric;
         this.textileComposition = textileComposition;
-        System.out.println(this.textileName);
 
     }
 
