@@ -13,25 +13,33 @@ public class FabricFinder {
 
     private List<Textile> textileCatalog;
 
+    //Constructor to initialize the textile catalog
     public FabricFinder(String csvFilePath) {
         this.textileCatalog = loadTextilesFromCSV(csvFilePath);
         if(textileCatalog.isEmpty()) {
-            TextUI.displayMsg("No textiles loaded. Please check the CSV file.")
+            TextUI.displayMsg("No textiles loaded. Please check the CSV file.");
         }
     }
 
-  // Run the methods
+  // Run the Fabric Finder Service
   public void runFabricFinder() {
-
+      //Check if catalog is loaded
+      if (textileCatalog == null || textileCatalog.isEmpty()) {
+          TextUI.displayMsg("Textile catalog is empty. Please check the CSV file.");
+          return;
+      }
       //Prompt user for file path (should also have a way to go back to menu)
-      String filePath = TextUI.promptText("Welcome to the Fabric Finder Service. \n" +
-              "Our AI will help you find the fabric you are looking for. \n" +
-              "Please enter the path of your fabric image file:");
-        processImage(filePath, textileCatalog);
+      String filePath = TextUI.promptText("""
+              Welcome to the Fabric Finder Service.
+              Our AI will help you find the fabric you are looking for.
+              Please enter the path of your fabric image file: 
+              """);
+      //Process the uploaded image
+      processImage(filePath);
   }
 
-    //Check if the file exists
-    public void processImage(String filePath, List<Textile> textileCatalog) {
+    //Process the uploaded image file
+    public void processImage(String filePath) {
         //Check if the file exists
         File file = new File(filePath);
         if (!file.isFile()){
@@ -54,7 +62,7 @@ public class FabricFinder {
         TextUI.displayMsg("Detected dominant color: " + colorName);
 
         //Find matching fabrics by comparing RGB
-        List<Textile> matchedTextiles = getMatchingTextiles(textileCatalog, uploadedRGB);
+        List<Textile> matchedTextiles = getMatchingTextiles(uploadedRGB);
 
         //Display result
         if (matchedTextiles.isEmpty()) {
@@ -118,7 +126,7 @@ public class FabricFinder {
     }
 
     //Find textiles with similar RGB (threshold comparison)
-    private List<Textile> getMatchingTextiles(List<Textile> textileCatalog, int[] uploadedRGB) {
+    private List<Textile> getMatchingTextiles(int[] uploadedRGB) {
       List<Textile> matchingTextiles = new ArrayList<>();
       for (Textile textile : textileCatalog) {
           if (isColorSimilar(uploadedRGB, textile.getRgb())){
