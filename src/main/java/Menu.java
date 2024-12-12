@@ -13,13 +13,14 @@ public class Menu {
     private FabricFinder fabricFinder;
 
 
+
     public Menu(ArrayList<Textile> textiles) {
 
         this.textilesDataPath = "data/textiles.csv";
         this.textiles = textiles;
 
         this.manager = manager;
-        //this.fabricFinder = fabricFinder;
+        this.fabricFinder = new FabricFinder(textilesDataPath);
         //this.users = users;
         //this.search = new Search();
     }
@@ -41,7 +42,7 @@ public class Menu {
                 break;
             case 3:
                 ui.displayMsg("FabricFinder");
-                fabricFinder.startFabricFinder();
+                fabricFinder.runFabricFinder();
                 break;
             case 4:
                 ui.displayMsg("Profile");

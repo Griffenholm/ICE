@@ -43,6 +43,10 @@ public class Textile {
         return rgb !=null ? Arrays.copyOf(rgb, rgb.length) : null; //Checks if the rgb is not null. If the method is null, it returns null. It insures that I don't attempt to copy a non-existent array which will cause a NullPointerException.
     }
 
+    public String getTextileColor(){
+        return textileColor;
+    }
+
     public String getTextileFabric() {
         return textileFabric;
     }
