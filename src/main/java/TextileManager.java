@@ -7,21 +7,15 @@ public class TextileManager {
     private TextUI ui;
     private FileIO io;
     private TextileService textileService;
+    private FabricFinder fabricFinder;
 
-    TextileManager(TextUI ui, FileIO io, String textilesDataPath, TextileService textileService, User currentUser) {
+    TextileManager(TextUI ui, FileIO io, String textilesDataPath, User currentUser) {
         this.ui = ui;
         this.io = io;
-        //this.textiles = io.readTextileData(textilesDataPath, "Textile");
-        this.textileService = textileService;
         this.currentUser = currentUser;
     }
 
 
-
-    public void textileCollection() {
-
-
-    }
 
     public void searchByTextiles() {
 
@@ -30,4 +24,6 @@ public class TextileManager {
     /*public void textilelistInteraction() {
 
     }*/
+
+
 }

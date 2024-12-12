@@ -10,7 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FabricFinder {
-
+    public static void startFabricFinder() {
+        System.out.println("Start FabricFinder");
+    }
+}
     private final List<Textile> textileCatalog;
 
     //Constructor to initialize the textile catalog
@@ -56,6 +59,7 @@ public class FabricFinder {
 
         //Print detected RGB color
         TextUI.displayMsg("Detected RGB color: " + uploadedRGB[0] + ", " + uploadedRGB[1] + ", " + uploadedRGB[2]);
+
 
         //Identify the color
         String colorName =identifyColor(uploadedRGB);
@@ -161,5 +165,3 @@ public class FabricFinder {
           e.printStackTrace();
       }
       return textiles;
-    }
-}

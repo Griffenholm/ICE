@@ -9,52 +9,22 @@ import java.util.Scanner;
 
 public class FileIO {
 
-    public static <T>ArrayList<T> readTextileData(String path) {
-        String name;
-        String color;
-        String fabric;
-        String composition;
-        double cost;
-        ArrayList<T> textileData = new ArrayList<>();
+    public static ArrayList<String> readData(String path) {
+        ArrayList<String> data = new ArrayList<>();
         File file = new File(path);
-        try {
+        try{
             Scanner scan = new Scanner(file);
             scan.nextLine();//skip header
-            while (scan.hasNextLine()) {
+
+            while (scan.hasNextLine())  {
                 String line = scan.nextLine();
-                String[] data = line.split(";"); //Name/Color/Fabric/Composition/Cost/Path/RGB
-                name = data[0].trim();
-                color = data[1].trim();
-                fabric = (data[2].trim());
-                composition = (data[3].trim());
-                try {
-                    String newCost = data[4].trim().replace(',', '.');
-                    cost = Double.valueOf(newCost);
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
-
-                    //Textile newTextile = new Textile(name, color, fabric, composition, cost);
-                    //textileData.add((T) newTextile);
-
-
+                data.add(line);
 
             }
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e){
             System.out.println("File was not found");
         }
-        return textileData;
+        return data;
     }
 
-    /*
-    public static void SaveUserData(String userAsText, String path) {
-        try {
-            FileWriter writer = new FileWriter(path, true);
-            writer.write(userAsText + "\n"); //"username, password";
-            writer.close();
-        } catch (IOException e) {
-            System.out.println("something went wrong when writing to file");
-        }
-    }
-    */
 }

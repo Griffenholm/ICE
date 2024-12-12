@@ -12,6 +12,8 @@ public class User {
     private static int UserIDCounter = 1;
     private User currentUser;
 
+
+
     public User(String username, String password) {
         this.username = username;
         this.password = password;
@@ -26,6 +28,8 @@ public class User {
     public String getPassword(){
         return password;
     }
+
+
 
     @Override
     public String toString(){
@@ -99,7 +103,7 @@ public class User {
                 // SavedList
                 break;
             case 4:
-                //AccountMenu();
+                //SettingMenu();
                 break;
             default:
                 //if the choose a diffent nr than 1 to 4.
@@ -107,6 +111,22 @@ public class User {
                 break;
         }
     }
+
+    public void settingMenu(){
+        TextUI.displayMsg("==Settings==\n" +
+                "1. Update Business Name\n" +
+                "2. Update Contact Person\n" +
+                "3. Update Email\n" +
+                "4. Update Address\n" +
+                "5. Update Postal Code\n" +
+                "6. Update City\n" +
+                "7. Update Country\n" +
+                "8. Update CVR Number\n" +
+                "9. View Current Information\n" +
+                "10. Exit ");
+    }
+
+
 
 
 

@@ -5,7 +5,7 @@ public class Main {
         System.setProperty("GOOGLE_APPLICATION_CREDENTIALS", "src/main/resources/service-account-api-key.json");
 
         TextileService s = new TextileService("TextileHouse");
-        s.startTextileService();
+        s.setup();
 
 
 
