@@ -1,8 +1,9 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Menu {
     private ArrayList<Textile> textiles;
-    private User currentUser;
+    private static User currentUser;
     private TextUI ui = new TextUI();
     private FileIO io = new FileIO();
 
@@ -45,7 +46,7 @@ public class Menu {
                 break;
             case 4:
                 ui.displayMsg("Profile");
-                User.profileMenu(currentUser);
+                profileMenu(currentUser);
                 break;
             case 5:
                 //manager.textilelistInteraction(currentUser.getSavedlist(), "Savedlist");
@@ -106,6 +107,73 @@ public class Menu {
                 ui.displayMsg("Invalid choice. Going back...");
                 homeMenu();
         }
+
+    }
+
+
+    public static int profileMenuOptions(){
+        ArrayList<String> menu = new ArrayList<>(Arrays.asList("1.Kurv \n" +
+                "2.Ordrehistorik \n" +
+                "3.SavedList \n" +
+                "4.Account"));
+        TextUI.displayMsg("==ProfileMenu==");
+        TextUI.displayMsg(String.valueOf(menu));
+        return TextUI.promptNumeric("Please enter a number between 1 and 4");
+
+    }
+
+    public void profileMenu(User currentUser){
+        int choice = profileMenuOptions();
+        switch(choice){
+            case 1:
+                // kruv
+                break;
+            case 2:
+                // OrdreHistroric
+                break;
+            case 3:
+                // SavedList
+                break;
+            case 4:
+                settingMenu();
+                userSettingsUpdateOrExit();
+                break;
+            default:
+                //if the user choose a diffent nr than 1 to 4.
+                TextUI.displayMsg("Please enter a number between 1 and 4");
+                break;
+        }
+    }
+
+    public static void settingMenu(){
+        TextUI.displayMsg("==Settings==\n" +
+                "Username: " + User.getUsername() + "\n" +
+                "Business Name: " + UserSettings.getBusinessName() + "\n" +
+                "Contact Person: " + UserSettings.getContactPerson() +"\n" +
+                "Email: " + UserSettings.getEmail()+"\n" +
+                "Address: " + UserSettings.getAddress()+"\n" +
+                "Postal Code: " + UserSettings.getPostalCode()+"\n" +
+                "City: " + UserSettings.getCity()+"\n" +
+                "Country: " + UserSettings.getCountry()+"\n" +
+                "CVR Number: " + UserSettings.getCVRnr()+"\n" );
+    }
+    public User userSettingsUpdateOrExit(){
+        TextUI.displayMsg("Do you want to update your info or exit to menu? \n" +
+                "1. Update information\n" +
+                "2. Exit");
+
+        int choice = TextUI.promptNumeric ( " Please choose 1 or 2");
+
+        if(choice == 1){
+            //Update info
+
+        } else if(choice == 2){
+            homeMenu();
+        }else{
+            TextUI.displayMsg("Invalid option. Please choose between 1 or 2");
+            userSettingsUpdateOrExit();
+        }
+        return currentUser;
 
     }
 

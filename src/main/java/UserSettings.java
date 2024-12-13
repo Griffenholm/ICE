@@ -1,20 +1,20 @@
 public class UserSettings {
 
     private User user; // UserSetting "has-a" relationship
-    private String businessName = "not provided yet";
-    private String contactPerson = "not provided yet";
-    private String email = "not provided yet";
-    private String address = "not provided yet";
-    private int postalCode = 0;
-    private String city = "not provided yet";
-    private String country = "not provided yet";
-    private int CVRnr = 0;
+    private static String businessName = "not provided yet";
+    private static String contactPerson = "not provided yet";
+    private static String email = "not provided yet";
+    private static String address = "not provided yet";
+    private static int postalCode = 0;
+    private static String city = "not provided yet";
+    private static String country = "not provided yet";
+    private static int CVRnr = 0;
 
     public UserSettings(User user) {
         this.user = user;
     }
 
-    public String getBusinessName(){
+    public static String getBusinessName(){
         return businessName;
     }
 
@@ -26,7 +26,7 @@ public class UserSettings {
         this.businessName = business;
     }
 
-    public String getContactPerson(){
+    public static String getContactPerson(){
         return contactPerson;
     }
 
@@ -34,7 +34,7 @@ public class UserSettings {
         this.contactPerson = contactPerson;
     }
 
-    public String getEmail(){
+    public static String getEmail(){
         return email;
     }
 
@@ -42,7 +42,7 @@ public class UserSettings {
         this.email = email;
     }
 
-    public String getAddress(){
+    public static String getAddress(){
         return address;
     }
 
@@ -50,7 +50,7 @@ public class UserSettings {
         this.address = address;
     }
 
-    public int getPostalCode(){
+    public static int getPostalCode(){
         return postalCode;
     }
 
@@ -58,7 +58,7 @@ public class UserSettings {
         this.postalCode = postalCode;
     }
 
-    public String getCity(){
+    public static String getCity(){
         return city;
     }
 
@@ -66,7 +66,7 @@ public class UserSettings {
         this.city = city;
     }
 
-    public String getCountry(){
+    public static String getCountry(){
         return country;
     }
 
@@ -74,7 +74,7 @@ public class UserSettings {
         this.country = country;
     }
 
-    public int getCVRnr(){
+    public static int getCVRnr(){
         return CVRnr;
     }
 
@@ -82,7 +82,6 @@ public class UserSettings {
         this.CVRnr = CVRnr;
     }
 
-    @Override
     public String toString(){
         //Provides a readable string/int
         return String.format(" Username: %s\n Business:%s\n Contact Person: %s\n Email: %s\n Address: %s\n Postal Code: %d\n City: %s\n Country: %s\n CVR Number: %d");

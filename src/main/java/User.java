@@ -4,13 +4,13 @@ import java.util.Arrays;
 
 public class User {
 
-    private String username;
-    private String password;
+    private static String username;
+    private static String password;
     ArrayList<Textile> savedList;
     ArrayList<Textile> getOrder;
     private int UserID;
     private static int UserIDCounter = 1;
-    private User currentUser;
+    public User currentUser;
 
 
 
@@ -21,7 +21,7 @@ public class User {
         this.getOrder = new ArrayList<>();
         this.UserID = UserIDCounter++;
     }
-    public String getUsername(){
+    public static String getUsername(){
         return username;
     }
 
@@ -78,53 +78,6 @@ public class User {
         return false;
     }
 
-    public static int profileMenuOptions(){
-        ArrayList<String> menu = new ArrayList<>(Arrays.asList("1.Kurv \n" +
-                "2.Ordrehistorik \n" +
-                "3.SavedList \n" +
-                "4.Account"));
-        TextUI.displayMsg("==ProfileMenu==");
-        TextUI.displayMsg(String.valueOf(menu));
-        return TextUI.promptNumeric("Please enter a number between 1 and 4");
-
-    }
-
-    public static void profileMenu(User currentUser){
-        int choice = profileMenuOptions();
-        currentUser = currentUser;
-        switch(choice){
-            case 1:
-                // kruv
-                break;
-            case 2:
-                // OrdreHistroric
-                break;
-            case 3:
-                // SavedList
-                break;
-            case 4:
-                //SettingMenu();
-                break;
-            default:
-                //if the choose a diffent nr than 1 to 4.
-                TextUI.displayMsg("Please enter a number between 1 and 4");
-                break;
-        }
-    }
-
-    public void settingMenu(){
-        TextUI.displayMsg("==Settings==\n" +
-                "1. Update Business Name\n" +
-                "2. Update Contact Person\n" +
-                "3. Update Email\n" +
-                "4. Update Address\n" +
-                "5. Update Postal Code\n" +
-                "6. Update City\n" +
-                "7. Update Country\n" +
-                "8. Update CVR Number\n" +
-                "9. View Current Information\n" +
-                "10. Exit ");
-    }
 
 
 

@@ -1,8 +1,6 @@
-import org.w3c.dom.ls.LSOutput;
+/*public class SettingManager {
 
-public class SettingManager {
-
-    public static void diaplaySettings(UserSettings userSettings){
+    public static void displaySettings(UserSettings userSettings){
         System.out.println("==Settings==");
         System.out.println(userSettings.toString());
         System.out.println("============");
@@ -38,5 +36,5 @@ public class SettingManager {
         System.out.println("The profile setup is complete");
     }
 
-}
+} */
 
