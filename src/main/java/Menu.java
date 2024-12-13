@@ -20,7 +20,9 @@ public class Menu {
         this.textiles = textiles;
 
         this.manager = manager;
+
         //this.fabricFinder = fabricFinder;
+        //this.fabricFinder = new fabricFinder(textilesDataPath);
         //this.users = users;
         //this.search = new Search();
     }
@@ -42,7 +44,7 @@ public class Menu {
                 break;
             case 3:
                 ui.displayMsg("FabricFinder");
-                fabricFinder.startFabricFinder();
+                fabricFinder.runFabricFinder();
                 break;
             case 4:
                 ui.displayMsg("Profile");
