@@ -41,7 +41,8 @@ public class FileIO {
                     String.valueOf(details.getCVRnr())        //CVR NR
             );
             //to go to next line with new info
-            writer.write(csvRow + "\n");
+            writer.write(csvRow + System.lineSeparator()+"\n");
+            System.out.println("settings saved to csv successfully");
 
         }catch (IOException e) {
             e.printStackTrace();

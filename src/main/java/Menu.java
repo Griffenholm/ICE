@@ -112,12 +112,11 @@ public class Menu {
 
 
     public static int profileMenuOptions(){
-        ArrayList<String> menu = new ArrayList<>(Arrays.asList("1.Kurv \n" +
+        TextUI.displayMsg("==ProfileMenu==");
+        TextUI.displayMsg("1.Kurv \n" +
                 "2.Ordrehistorik \n" +
                 "3.SavedList \n" +
-                "4.Account"));
-        TextUI.displayMsg("==ProfileMenu==");
-        TextUI.displayMsg(String.valueOf(menu));
+                "4.Account");
         return TextUI.promptNumeric("Please enter a number between 1 and 4");
 
     }
@@ -135,8 +134,8 @@ public class Menu {
                 // SavedList
                 break;
             case 4:
-                settingMenu();
-                userSettingsUpdateOrExit();
+                settingsMenu(currentUser);
+                //FileIO.saveSettingsToCSV();
                 break;
             default:
                 //if the user choose a diffent nr than 1 to 4.
@@ -145,8 +144,8 @@ public class Menu {
         }
     }
 
-    public static void settingMenu(){
-        TextUI.displayMsg("==Settings==\n" +
+   /* public static void settingsMenu(){
+        TextUI.displayMsg("==Account==\n" +
                 "Username: " + User.getUsername() + "\n" +
                 "Business Name: " + UserSettings.getBusinessName() + "\n" +
                 "Contact Person: " + UserSettings.getContactPerson() +"\n" +
@@ -176,6 +175,89 @@ public class Menu {
         return currentUser;
 
     }
+    */
+
+    public void settingsMenu(User currentUser){
+        boolean exit = false; //to manage the menu while loop
+
+        while(!exit){
+            //display the settingsMenu
+            TextUI.displayMsg("==Account==\n" +
+            "1.  Username: " + User.getUsername() + "\n"+
+            "2.  Business Name: " + UserSettings.getBusinessName() + "\n" +
+            "3.  Contact Person: " + UserSettings.getContactPerson() +"\n" +
+            "4.  Email: " + UserSettings.getEmail()+"\n" +
+            "5.  Address: " + UserSettings.getAddress()+"\n" +
+            "6.  Postal Code: " + UserSettings.getPostalCode()+"\n" +
+            "7.  City: " + UserSettings.getCity()+"\n" +
+            "8.  Country: " + UserSettings.getCountry()+"\n" +
+            "9.  CVR Number: " + UserSettings.getCVRnr()+"\n" +
+            "10. Exit");
+
+            //promp the user for their choice
+            int choice = TextUI.promptNumeric("Select the infomation you want to update (1-10): ");
+
+            //Use a switch-case for single updates
+            switch(choice){
+                case 1:
+                    String updateUsername = TextUI.promptText("Enter new username: ");
+                    User.setUsername(updateUsername);
+                    TextUI.displayMsg("Username is now updated");
+                    break;
+                case 2:
+                    String updateBusinessname = TextUI.promptText("Enter new Business name: ");
+                    UserSettings.setBusinessName(updateBusinessname);
+                    TextUI.displayMsg("Business name is now updated");
+                    break;
+                case 3:
+                    String updateContactPerson = TextUI.promptText("Enter new Contact Person: ");
+                    UserSettings.setContactPerson(updateContactPerson);
+                    TextUI.displayMsg("Contact Person is now updated");
+                    break;
+                case 4:
+                    String updateEmail = TextUI.promptText("Enter new Email add. : ");
+                    UserSettings.setEmail(updateEmail);
+                    TextUI.displayMsg("Email add. is now updated");
+                    break;
+                case 5:
+                    String updateAddress = TextUI.promptText("Enter new Address: ");
+                    UserSettings.setAddress(updateAddress);
+                    TextUI.displayMsg("Address is now updated");
+                    break;
+                case 6:
+                    int updatePostalCode = TextUI.promptNumeric("Enter new PostalCode: ");
+                    UserSettings.setPostalCode(updatePostalCode);
+                    TextUI.displayMsg("PostalCode is now updated");
+                    break;
+                case 7:
+                    String updateCity = TextUI.promptText("Enter new City: ");
+                    UserSettings.setCity(updateCity);
+                    TextUI.displayMsg("City is now updated");
+                    break;
+                case 8:
+                    String updateCountry = TextUI.promptText("Enter new Country: ");
+                    UserSettings.setCountry(updateCountry);
+                    TextUI.displayMsg("Country is now updated");
+                    break;
+                case 9:
+                    int updateCVRnr = TextUI.promptNumeric("Enter new Contact Person: ");
+                    UserSettings.setCVRnr(updateCVRnr);
+                    TextUI.displayMsg("Contact Person is now updated");
+                    break;
+                case 10:
+                    // Exit to the homeMenu
+                    exit = true;
+                    TextUI.displayMsg("Exiting settings menu.");
+                    homeMenu();
+                    break;
+                default:
+                    TextUI.displayMsg("Invalid option. Please choose a number between 1 and 10.");
+                    break;
+            }
+           // FileIO.saveSettingsToCSV(User.getSettings(), "settings.csv");
+        }
+    }
+
 
 
 

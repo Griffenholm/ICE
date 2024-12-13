@@ -10,7 +10,7 @@ public class UserSettings {
     private static String country = "not provided yet";
     private static int CVRnr = 0;
 
-    public UserSettings(User user) {
+    public UserSettings() {
         this.user = user;
     }
 
@@ -22,64 +22,64 @@ public class UserSettings {
         return user;
     }
 
-    public void setBusinessName(String business){
-        this.businessName = business;
+    public static void setBusinessName(String business){
+        businessName = business;
     }
 
     public static String getContactPerson(){
         return contactPerson;
     }
 
-    public void setContactPerson(String contactPerson){
-        this.contactPerson = contactPerson;
+    public static void setContactPerson(String contactPerson){
+        contactPerson = contactPerson;
     }
 
     public static String getEmail(){
         return email;
     }
 
-    public void setEmail(String email){
-        this.email = email;
+    public static void setEmail(String email){
+        email = email;
     }
 
     public static String getAddress(){
         return address;
     }
 
-    public void setAddress(String address){
-        this.address = address;
+    public static void setAddress(String address){
+        address = address;
     }
 
     public static int getPostalCode(){
         return postalCode;
     }
 
-    public void setPostalCode(int postalCode){
-        this.postalCode = postalCode;
+    public static void setPostalCode(int postalCode){
+        postalCode = postalCode;
     }
 
     public static String getCity(){
         return city;
     }
 
-    public void setCity(String city){
-        this.city = city;
+    public static void setCity(String city){
+        city = city;
     }
 
     public static String getCountry(){
         return country;
     }
 
-    public void setCountry(String country){
-        this.country = country;
+    public static void setCountry(String country){
+        country = country;
     }
 
     public static int getCVRnr(){
         return CVRnr;
     }
 
-    public void setCVRnr(int CVRnr){
-        this.CVRnr = CVRnr;
+    public static void setCVRnr(int CVRnr){
+        CVRnr = CVRnr;
     }
 
     public String toString(){
