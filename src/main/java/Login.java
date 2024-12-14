@@ -55,7 +55,11 @@ public class Login {
         users.add(newUser);
         currentUser = newUser;
         TextUI.displayMsg("You have successfully been registered.");
+
+        writeUserToCSV(newUser);
     }
+
+
 
     /*
     void startStreamingService() {

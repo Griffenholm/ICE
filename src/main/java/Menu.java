@@ -254,7 +254,7 @@ public class Menu {
                     TextUI.displayMsg("Invalid option. Please choose a number between 1 and 10.");
                     break;
             }
-           // FileIO.saveSettingsToCSV(User.getSettings(), "settings.csv");
+           // FileIO.saveSettingsToCSV(User.getSettings(), "userData.csv");
         }
     }
 
