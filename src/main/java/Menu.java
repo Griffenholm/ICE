@@ -20,9 +20,7 @@ public class Menu {
         this.textiles = textiles;
 
         this.manager = manager;
-
-        //this.fabricFinder = fabricFinder;
-        //this.fabricFinder = new fabricFinder(textilesDataPath);
+        this.fabricFinder = new FabricFinder(textilesDataPath);
         //this.users = users;
         //this.search = new Search();
     }

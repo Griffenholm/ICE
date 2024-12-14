@@ -1,16 +1,7 @@
-public class FabricFinder {
-
-
-
-
-    public static void runFabricFinder() {
-        System.out.println("Start FabricFinder");
-    }
-}
 
 //I have installed the plugin Google Cloud Code to intelliJ.
 
-/*import com.google.cloud.vision.v1.*;
+import com.google.cloud.vision.v1.*;
 import com.google.protobuf.ByteString;
 
 import java.io.*;
@@ -205,4 +196,3 @@ public class FabricFinder {
         return textiles;
     }
 }
-*/
