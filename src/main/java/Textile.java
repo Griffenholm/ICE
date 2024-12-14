@@ -47,6 +47,10 @@ public class Textile {
         return textileFabric;
     }
 
+    public String getTextileColor() {
+        return textileColor;
+    }
+
     public String getTextileComposition() {
         return textileComposition;
     }
