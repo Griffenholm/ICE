@@ -8,3 +8,11 @@
 .idea/
 *.iml
 out/
+
+# Ignore sensitive files in resources
+src/main/resources/*.json
+
+# Ignore other sensitive files
+*.key
+*.pem
+*.env

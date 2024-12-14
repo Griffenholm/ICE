@@ -33,7 +33,6 @@ public class FabricFinder {
         }
         //Prompt user for file path (should also have a way to go back to menu)
         String filePath = TextUI.promptText("""
-                Welcome to the Fabric Finder Service.
                 Our AI will help you find the fabric you are looking for.
                 Please enter the path of your fabric image file:
                 """);
@@ -47,14 +46,14 @@ public class FabricFinder {
         File file = new File(filePath);
         if (!file.isFile()) {
             TextUI.displayMsg("Invalid file path. Please try again");
-            return;
+            runFabricFinder();
         }
 
         //Call Google Vision API to get dominant RGB color
         int[] uploadedRGB = getDominantColorFromVisionAPI(filePath);
         if (uploadedRGB == null) {
             TextUI.displayMsg("Error analyzing the image. Please try again");
-            return;
+            runFabricFinder();
         }
 
         //Print detected RGB color
