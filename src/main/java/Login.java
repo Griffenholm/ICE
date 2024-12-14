@@ -56,7 +56,7 @@ public class Login {
         currentUser = newUser;
         TextUI.displayMsg("You have successfully been registered.");
 
-        writeUserToCSV(newUser);
+        //writeUserToCSV(newUser);
     }
 
 
