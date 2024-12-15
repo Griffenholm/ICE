@@ -21,6 +21,7 @@ public class FileIO {
                 data.add(line);
 
             }
+            scan.close();
         } catch (FileNotFoundException e){
             System.out.println("File was not found");
         }

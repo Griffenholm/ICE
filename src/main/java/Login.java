@@ -2,11 +2,10 @@ import java.util.ArrayList;
 
 
 public class Login {
-    private static ArrayList<User> users;
+    private static ArrayList<User> users = new ArrayList<>();
     private static User currentUser;
 
     public Login() {
-        this.users = new ArrayList<>();
     }
 
     public static User userLoginOrRegister(){
@@ -34,9 +33,13 @@ public class Login {
         String username = TextUI.promptText("Please enter your username: ");
         String password = TextUI.promptText("Please enter your password: ");
 
+        loadUsersFromCSV();
+        System.out.println("cheking user : " + User.getUsername() +"with password: " + User.getPassword());
+
         for( User user : users){
             if(user.getUsername().equalsIgnoreCase(username) && user.getPassword().equalsIgnoreCase(password)){
                 currentUser = user;
+                TextUI.displayMsg("Login has been sucessful");
                 return;
             }
         }
@@ -45,9 +48,8 @@ public class Login {
     }
 
     public static void userCreate(){
-        if(users == null){
-            users = new ArrayList<>();
-        }
+
+        loadUsersFromCSV();
         TextUI.displayMsg("You have chosen to create a new user");
         String username = User.username(users);
         String password = User.password();
@@ -55,9 +57,24 @@ public class Login {
         User newUser = new User(username, password);
         users.add(newUser);
         currentUser = newUser;
+        FileIO.writeUserToCSV(newUser);
         TextUI.displayMsg("You have successfully been registered.");
 
-        FileIO.writeUserToCSV(newUser);
+    }
+
+
+    public static void loadUsersFromCSV() {
+        // Clear the existing users list and load users from the file
+        ArrayList<String> data = FileIO.readData("usersdata.csv");
+        for (String line : data) {
+            String[] userDetails = line.split(",");
+            if (userDetails.length >= 2) {
+                User user = new User(userDetails[0], userDetails[1]);
+                users.add(user); // Add each user from CSV to the list
+            }else{
+                TextUI.displayMsg("Invalid user data in CSV" + line);
+            }
+        }
     }
 
 
@@ -127,9 +144,5 @@ public class Login {
     public User getCurrentUser(){
         return currentUser;
     }
-
-
-
-
 
 }
