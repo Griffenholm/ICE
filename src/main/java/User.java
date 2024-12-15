@@ -11,6 +11,7 @@ public class User {
     private int UserID;
     private static int UserIDCounter = 1;
     public User currentUser;
+    private static ArrayList<User> users = new ArrayList<>();
 
 
 
@@ -44,21 +45,44 @@ public class User {
     // the 2 methode below is for creating a new user
     // to check if the username is taken
     public static String username(ArrayList<User> users) {
-        String username = TextUI.promptText("Please enter username: ");
-        if (checkForDuplicateUsername(username, users)) {
-            TextUI.displayMsg("The username is already taken, please chose another one.");
-            username = username(users);
-        }
-        return username;
-    }
-    public static boolean checkForDuplicateUsername(String username, ArrayList<User> users) {
-        boolean isDuplicate = false;
-        for (User u : users) {
-            if (u.getUsername().equalsIgnoreCase(username)) {
-                isDuplicate = true;
+        //version 1, virker ikke ordenligt
+        while (true) {
+            String username = TextUI.promptText("Please enter username: ");
+            if (isUsernameUnique(username, users)) {
+                return username;
+            } else {
+                TextUI.displayMsg("The username is already taken, please chose another one.");
             }
         }
-        return isDuplicate;
+        //version 2 virker ikke ordenligt
+
+       /* String username;
+        boolean isUnique;
+
+        // Keep prompting the user until a unique username is provided
+        do {
+            username = TextUI.promptText("Please enter username: ");
+            isUnique = checkForDuplicateUsername(username,users);  // Check for duplicates
+            if (!isUnique) {
+                TextUI.displayMsg("The username is already taken, please choose another one.");
+            }
+        } while (!isUnique);  // Repeat if username is not unique
+
+        return username;  // Return the unique username
+
+        */
+    }
+
+    public static boolean isUsernameUnique(String username,ArrayList<User> users) {
+        return users.stream().noneMatch(u->u.getUsername().equalsIgnoreCase(username));
+    }
+    public static boolean checkForDuplicateUsername(String username,ArrayList<User> users) {
+        for (User u : users) {
+            if (u.getUsername().equalsIgnoreCase(username)) {
+                return true;
+            }
+        }
+       return false;
     }
 
     //to make the password more secure
@@ -81,11 +105,6 @@ public class User {
         }
         return false;
     }
-
-
-
-
-
 
 
 }

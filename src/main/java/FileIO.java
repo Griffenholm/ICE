@@ -50,5 +50,14 @@ public class FileIO {
         }
     }
 
+    public static void writeUserToCSV(User user){
+        String filePath = "usersdata.csv";
+        System.out.println("writing to : " + new File(filePath).getAbsolutePath());
+        try ( FileWriter writer = new FileWriter(filePath, true)){
+            writer.write(user.getUsername() + "," +user.getPassword() + "\n");
+        } catch (IOException e){
+            TextUI.displayMsg("Error saving to th CSV");
+        }
+    }
 
 }

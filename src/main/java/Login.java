@@ -2,14 +2,14 @@ import java.util.ArrayList;
 
 
 public class Login {
-    private ArrayList<User> users;
-    private User currentUser;
+    private static ArrayList<User> users;
+    private static User currentUser;
 
-    public Login(ArrayList<User> users) {
-        this.users = users;
+    public Login() {
+        this.users = new ArrayList<>();
     }
 
-    public User userLoginOrRegister(){
+    public static User userLoginOrRegister(){
         TextUI.displayMsg("Welcome to the Login or Registration Page");
         TextUI.displayMsg("Do you want to login or create a new user? \n" +
                 "1. Login \n" +
@@ -19,10 +19,8 @@ public class Login {
 
         if(choice == 1){
             userLogin();
-            //homeMenu();
         } else if(choice == 2){
             userCreate();
-            // homeMenu
         }else{
             TextUI.displayMsg("Invalid option. Please choose between 1 or 2");
             userLoginOrRegister();
@@ -31,7 +29,7 @@ public class Login {
 
     }
 
-    public void userLogin(){
+    public static void userLogin(){
         TextUI.displayMsg("You have chosen to login");
         String username = TextUI.promptText("Please enter your username: ");
         String password = TextUI.promptText("Please enter your password: ");
@@ -46,7 +44,10 @@ public class Login {
         userLoginOrRegister();
     }
 
-    public void userCreate(){
+    public static void userCreate(){
+        if(users == null){
+            users = new ArrayList<>();
+        }
         TextUI.displayMsg("You have chosen to create a new user");
         String username = User.username(users);
         String password = User.password();
@@ -56,7 +57,7 @@ public class Login {
         currentUser = newUser;
         TextUI.displayMsg("You have successfully been registered.");
 
-        //writeUserToCSV(newUser);
+        FileIO.writeUserToCSV(newUser);
     }
 
 
