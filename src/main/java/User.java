@@ -1,6 +1,3 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -43,32 +40,6 @@ public class User {
     @Override
     public String toString(){
         return username + ";" + password;
-    }
-
-
-    // the 2 methode below is for creating a new user
-    // to check if the username is taken
-   /* public static String username(ArrayList<User> users) {
-        //version 1,
-        while (true) {
-            String username = TextUI.promptText("Please enter username: ");
-            if (isUsernameUnique(username, users)) {
-                return username;
-            } else {
-                TextUI.displayMsg("The username is already taken, please chose another one.");
-            }
-        }
-
-    }
-
-    */
-    public static boolean isUsernameUnique(String username,ArrayList<User> users) {
-        for (User u : users) {
-            if (u.getUsername().equalsIgnoreCase(username)) {
-                return false;
-            }
-        }
-       return true;
     }
 
     //to make the password more secure

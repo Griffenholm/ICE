@@ -144,39 +144,6 @@ public class Menu {
         }
     }
 
-   /* public static void settingsMenu(){
-        TextUI.displayMsg("==Account==\n" +
-                "Username: " + User.getUsername() + "\n" +
-                "Business Name: " + UserSettings.getBusinessName() + "\n" +
-                "Contact Person: " + UserSettings.getContactPerson() +"\n" +
-                "Email: " + UserSettings.getEmail()+"\n" +
-                "Address: " + UserSettings.getAddress()+"\n" +
-                "Postal Code: " + UserSettings.getPostalCode()+"\n" +
-                "City: " + UserSettings.getCity()+"\n" +
-                "Country: " + UserSettings.getCountry()+"\n" +
-                "CVR Number: " + UserSettings.getCVRnr()+"\n" );
-    }
-    public User userSettingsUpdateOrExit(){
-        TextUI.displayMsg("Do you want to update your info or exit to menu? \n" +
-                "1. Update information\n" +
-                "2. Exit");
-
-        int choice = TextUI.promptNumeric ( " Please choose 1 or 2");
-
-        if(choice == 1){
-            //Update info
-
-        } else if(choice == 2){
-            homeMenu();
-        }else{
-            TextUI.displayMsg("Invalid option. Please choose between 1 or 2");
-            userSettingsUpdateOrExit();
-        }
-        return currentUser;
-
-    }
-    */
-
     public void settingsMenu(User currentUser){
         boolean exit = false; //to manage the menu while loop
 
