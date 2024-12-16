@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class FabricFinder {
 
     private final List<Textile> textileCatalog;
@@ -21,8 +22,6 @@ public class FabricFinder {
             TextUI.displayMsg("No textiles loaded. Please check the CSV file.");
         }
     }
-
-
 
     // Run the Fabric Finder Service
     public void runFabricFinder() {
@@ -36,6 +35,10 @@ public class FabricFinder {
                 Our AI will help you find the fabric you are looking for.
                 Please enter the path of your fabric image file:
                 """);
+        // If the user selects "1" to go back to the home menu, return
+        // If (filePath.equals("1")) {
+        // return;  // Simply return to the calling method (home menu)
+        //    }
         //Process the uploaded image
         processImage(filePath);
     }
@@ -50,6 +53,7 @@ public class FabricFinder {
         }
 
         //Call Google Vision API to get dominant RGB color
+        TextUI.displayMsg("Processing request...");
         int[] uploadedRGB = getDominantColorFromVisionAPI(filePath);
         if (uploadedRGB == null) {
             TextUI.displayMsg("Error analyzing the image. Please try again");
@@ -58,7 +62,6 @@ public class FabricFinder {
 
         //Print detected RGB color
         TextUI.displayMsg("Detected RGB color: " + uploadedRGB[0] + ", " + uploadedRGB[1] + ", " + uploadedRGB[2]);
-
 
         //Identify the color
         String colorName = identifyColor(uploadedRGB);
@@ -69,7 +72,8 @@ public class FabricFinder {
 
         //Display result
         if (matchedTextiles.isEmpty()) {
-            TextUI.displayMsg("No matching fabrics found. Please try again");
+            TextUI.displayMsg("No matching fabrics found. Please try again... \n");
+            runFabricFinder();
         } else {
             TextUI.displayMsg("Matching fabrics: \n");
             for (Textile textile : matchedTextiles) {
@@ -140,11 +144,13 @@ public class FabricFinder {
     }
 
     private boolean isColorSimilar(int[] rgb1, int[] rgb2) {
-        int threshold = 50; //Adjust threshold as needed
-        return Math.abs(rgb1[0] - rgb2[0]) <= threshold &&
-                Math.abs(rgb1[1] - rgb2[1]) <= threshold &&
-                Math.abs(rgb1[2] - rgb2[2]) <= threshold;
+        int rDiff = rgb1[0] - rgb2[0];
+        int gDiff = rgb1[1] - rgb2[1];
+        int bDiff = rgb1[2] - rgb2[2];
+        double distance = Math.sqrt(rDiff * rDiff + gDiff * gDiff + bDiff * bDiff);  // Euclidean distance
+        return distance < 200;  // Adjust threshold as needed, this will need to be experimented with
     }
+
 
     //Load textile data from a CSV file
     public static List<Textile> loadTextilesFromCSV(String fileName) {

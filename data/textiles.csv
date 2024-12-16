@@ -1,4 +1,5 @@
 Name; Color; Fabric; Composition; Cost; Path; RGB
 Blue Cotton; Blue; Cotton; 100% Cotton; 50,50; /local/images/blue_cotton.jpg; 0,0,255
 Red Silk; Red; Silk; 100% Silk; 100,00; /local/images/red_silk.jpg; 255,0,0
+Red Polyester; Red; Polyester; 100% Polyester; 60,00; /local/images/red_polyester.jpg; 255,10,10
 Yellow Linen; Yellow; Linen; 100% Linen; 100,00; /local/images/yellow_linen.jpg; 0,255,0
