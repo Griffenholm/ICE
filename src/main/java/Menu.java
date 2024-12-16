@@ -13,6 +13,8 @@ public class Menu {
     private Textile currentTextile;
     private FabricFinder fabricFinder;
 
+    private boolean turnOff;
+
 
     public Menu(ArrayList<Textile> textiles) {
 
@@ -57,6 +59,8 @@ public class Menu {
                 break;
             case 7:
                 ui.displayMsg("Logging out");
+                turnOff = true;
+                Login.userLoginOrRegister();
                 break;
             default:
                 ui.displayMsg("Choice invalid");
@@ -131,7 +135,7 @@ public class Menu {
                 // OrdreHistroric
                 break;
             case 3:
-                // SavedList
+                User.userSavedList();
                 break;
             case 4:
                 settingsMenu(currentUser);
@@ -225,7 +229,8 @@ public class Menu {
         }
     }
 
-
-
+    public boolean isTurnOff(){
+        return turnOff;
+    }
 
 }

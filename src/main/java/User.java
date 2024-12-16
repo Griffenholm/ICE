@@ -11,7 +11,7 @@ public class User {
     ArrayList<Textile> getOrder;
     private int UserID;
     private static int UserIDCounter = 1;
-    public User currentUser;
+    public static User currentUser;
     private static ArrayList<User> users = new ArrayList<>();
 
 
@@ -33,6 +33,10 @@ public class User {
 
     public static String getPassword(){
         return password;
+    }
+
+    public ArrayList<Textile> getSaved() {
+        return savedList;
     }
 
 
@@ -63,5 +67,16 @@ public class User {
         return false;
     }
 
+    public static void userSavedList(){
+        TextUI.displayMsg("Here is your savedList: ");
+        ArrayList<Textile> savedList = currentUser.getSaved();
+        if(savedList.isEmpty()){
+            TextUI.displayMsg("Your savedList is empty");
+        }else{
+            for (Textile textile : savedList){
+                TextUI.displayMsg((Textile.getTextileName()));
+            }
+        }
+    }
 
 }
