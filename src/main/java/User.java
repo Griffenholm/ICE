@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -44,7 +48,7 @@ public class User {
 
     // the 2 methode below is for creating a new user
     // to check if the username is taken
-    public static String username(ArrayList<User> users) {
+   /* public static String username(ArrayList<User> users) {
         //version 1,
         while (true) {
             String username = TextUI.promptText("Please enter username: ");
@@ -57,6 +61,7 @@ public class User {
 
     }
 
+    */
     public static boolean isUsernameUnique(String username,ArrayList<User> users) {
         for (User u : users) {
             if (u.getUsername().equalsIgnoreCase(username)) {

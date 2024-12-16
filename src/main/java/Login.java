@@ -1,7 +1,11 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
 public class Login {
+    private static final String filePath = "usersdata.csv";
     private static ArrayList<User> users = new ArrayList<>();
     private static User currentUser;
 
@@ -28,13 +32,13 @@ public class Login {
 
     }
 
-    public static void userLogin(){
+   /* public static void userLogin(){
         TextUI.displayMsg("You have chosen to login");
         String username = TextUI.promptText("Please enter your username: ");
         String password = TextUI.promptText("Please enter your password: ");
 
         loadUsersFromCSV();
-        System.out.println("cheking user : " + User.getUsername() +"with password: " + User.getPassword());
+        System.out.println("cheking user : " + User.getUsername() +" with password: " + User.getPassword());
 
         for( User user : users){
             if(user.getUsername().equalsIgnoreCase(username) && user.getPassword().equalsIgnoreCase(password)){
@@ -45,8 +49,72 @@ public class Login {
         }
         TextUI.displayMsg("Login has failed. Username or password is incorrect");
         userLoginOrRegister();
+    }*/
+
+    //test 2 med login create and handle CSV file
+    public static void userLogin(){
+        TextUI.displayMsg("You have chosen to login");
+        String username = TextUI.promptText("Please enter your username: ");
+        String password = TextUI.promptText("Please enter your password: ");
+
+        if(login(username,password)){
+            TextUI.displayMsg("Login has been sucessful");
+        }else{
+            TextUI.displayMsg("Login has not been sucessful");
+        }
+
     }
 
+    public static void userCreate(){
+        TextUI.displayMsg("You have chosen to create a new user");
+        String username = TextUI.promptText("choose a username:");
+        String password = TextUI.promptText("choose a password");
+
+        if(userExists(username)){
+            System.out.println("Username is already taken");
+            userCreate();
+        }else{
+            User newUser = new User(username, password);
+            FileIO.writeUserToCSV(newUser);
+            System.out.println("You have successfully been registered.");
+        }
+    }
+
+    // test 2 Check if a user exists in the CSV file
+    static boolean userExists(String username) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] userDetails = line.split(",");
+                if (userDetails[0].equals(username)) {
+                    return true;
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading the CSV file: " + e.getMessage());
+        }
+        return false;
+    }
+
+    // Login method to validate credentials from the CSV file
+    private static boolean login(String username, String password) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] userDetails = line.split(",");
+                if (userDetails[0].equals(username) && userDetails[1].equals(password)) {
+                    return true; // Valid user
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading the CSV file: " + e.getMessage());
+        }
+        return false; // User not found or invalid credentials
+    }
+
+
+
+/*
     public static void userCreate(){
 
         loadUsersFromCSV();
@@ -62,6 +130,8 @@ public class Login {
 
     }
 
+
+ */
 
     public static void loadUsersFromCSV() {
         // Clear the existing users list and load users from the file
