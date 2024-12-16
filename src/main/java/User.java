@@ -68,10 +68,10 @@ public class User {
     }
 
     public static void userSavedList(){
-        TextUI.displayMsg("Here is your savedList: ");
+        TextUI.displayMsg("Here is your favorits: ");
         ArrayList<Textile> savedList = currentUser.getSaved();
         if(savedList.isEmpty()){
-            TextUI.displayMsg("Your savedList is empty");
+            TextUI.displayMsg("Your favorits is empty");
         }else{
             for (Textile textile : savedList){
                 TextUI.displayMsg((Textile.getTextileName()));
