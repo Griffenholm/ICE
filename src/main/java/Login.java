@@ -42,6 +42,7 @@ public class Login {
             TextUI.displayMsg("Login has been sucessful");
         }else{
             TextUI.displayMsg("Login has not been sucessful");
+            userLoginOrRegister();
         }
 
     }
