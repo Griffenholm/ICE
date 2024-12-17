@@ -1,6 +1,4 @@
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class User {
@@ -10,7 +8,7 @@ public class User {
     ArrayList<Textile> savedList;
     ArrayList<Textile> getOrder;
     private int UserID;
-    private static int UserIDCounter = 1;
+    private static int userIDCounter = 1;
     public static User currentUser;
     private static ArrayList<User> users = new ArrayList<>();
 
@@ -21,7 +19,7 @@ public class User {
         this.password = password;
         this.savedList = new ArrayList<>();
         this.getOrder = new ArrayList<>();
-        this.UserID = UserIDCounter++;
+        this.UserID = userIDCounter++;
     }
     public static String getUsername(){
         return username;
