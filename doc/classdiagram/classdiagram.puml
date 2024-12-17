@@ -33,29 +33,94 @@ class TextileManager{
 }
 
 class FabricFinder{
+ - List<Textile> textileCatalog
+
+    + FabricFinder(String csvFilePath)
+    + void runFabricFinder()
+    + void processImage(String filePath)
+    - int[] getDominantColorFromVisionAPI(String filePath)
+    - String identifyColor(int[] rgb)
+    - List<Textile> getMatchingTextiles(int[] uploadedRGB)
+    - boolean isColorSimilar(int[] rgb1, int[] rgb2)
+    + static List<Textile> loadTextilesFromCSV(String fileName)
 }
 
-class Login{
+class Login {
+    - static final String filePath
+    - static ArrayList<User> users
+    - static User currentUser
+
+    + Login()
+    + static User userLoginOrRegister()
+    + static void userLogin()
+    + static void userCreate()
+    + static boolean userExists(String username)
+    - static boolean login(String username, String password)
+    + static void loadUsersFromCSV()
+    + User getCurrentUser()
 }
 
 class User {
-- static String username
-- static String password
-- ArrayList<Textile> savedList
-- ArrayList<Textile> getOrder
-- int UserID
-- static int userIDCounter
-+ sta
-+ User(String username, String password)
-+ String toString()
-+ void addToSavedList(Textile textile)
-- void addToOrderList(Textile textile)
-+ String getUsername()
-+ ArrayList<Textile> getSavedList()
-+ ArrayList<Textile> getOrderList()
+    - static String username
+    - static String password
+    - ArrayList<Textile> savedList
+    - ArrayList<Textile> getOrder
+    - int UserID
+    - static int userIDCounter
+    - static ArrayList<User> users
+    - static User currentUser
+
+    + User(String username, String password)
+    + static String getUsername()
+    + static void setUsername(String newusername)
+    + static String getPassword()
+    + ArrayList<Textile> getSaved()
+    + String toString()
+    + static String password()
+    + static boolean checkUpperCase(String password)
+    + static void userSavedList()
 }
 
-class Textile {}
+class Textile {
+    - String textileName
+    - String path
+    - int[] rgb
+    - String textileColor
+    - String textileFabric
+    - String textileComposition
+
+    + Textile(String textileName, String path, int[] rgb)
+    + Textile(String textileName, String textileColor, String textileFabric, String textileComposition)
+
+    + String getTextileName()
+    + String getPath()
+    + int[] getRgb()
+    + String getTextileFabric()
+    + String getTextileColor()
+    + String getTextileComposition()
+}
+
+class Menu {
+    - ArrayList<Textile> textiles
+    - static User currentUser
+    - TextUI ui
+    - FileIO io
+    - String textilesDataPath
+    - TextileManager manager
+    - Textile currentTextile
+    - FabricFinder fabricFinder
+    - boolean turnOff
+
+    + Menu(ArrayList<Textile> textiles)
+    + void homeMenu()
+    + void textileCollection()
+    + void selectTextile()
+    + void displayTextileInformation()
+    + static int profileMenuOptions()
+    + void profileMenu(User currentUser)
+    + void settingsMenu(User currentUser)
+    + boolean isTurnOff()
+}
 
 package "util" {
 
@@ -85,4 +150,13 @@ TextileManager *-- Textile
 TextileManager *-- FabricFinder
 TextileService *-- Textile
 User *-- Textile
+Menu *-- Textile
+Menu *-- TextileManager
+Menu *-- FabricFinder
+Menu *-- TextUI
+Menu *-- FileIO
+Menu *-- User
+Login *-- User : maintains
+Login *-- TextUI : interacts
+Login *-- FileIO : interacts
 @enduml
