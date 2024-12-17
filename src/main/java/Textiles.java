@@ -9,14 +9,9 @@ public class Textiles extends Textile {
 
     @Override
     public String toString() {
-        return "Name: " + this.textileName + "\n" +
-                "Color: " + this.textileColor + "\n" +
-                "Fabric: " + this.textileFabric + "\n" +
-                "Composition: " + this.textileComposition + "\n";
+        return "Name: " + getTextileName() + "\n" +
+                "Color: " + getTextileColor() + "\n" +
+                "Fabric: " + getTextileFabric() + "\n" +
+                "Composition: " + getTextileComposition() + "\n";
     }
-
-
-
-
-
 }
