@@ -67,7 +67,7 @@ public class User {
         return false;
     }
 
-    public static void userSavedList(){
+   /* public static void userSavedList(){
         TextUI.displayMsg("Here is your favorits: ");
         ArrayList<Textile> savedList = currentUser.getSaved();
         if(savedList.isEmpty()){
@@ -78,5 +78,7 @@ public class User {
             }
         }
     }
+
+    */
 
 }

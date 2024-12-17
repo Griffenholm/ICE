@@ -50,7 +50,6 @@ public class FileIO {
             System.out.println("Error saving to th CSV");
         }
     }
-
     public static void writeUserToCSV(User user){
         String filePath = "usersdata.csv";
         System.out.println("writing to : " + new File(filePath).getAbsolutePath());
